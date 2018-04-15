@@ -28,7 +28,8 @@ public class WebPageUtil {
         Log.i(TAG,"getTitle");
         Elements body =  _mDocument.getElementsByTag("body");
         Element head = body.get(0);
-        Elements titles = head.getElementsByClass("contain");
+        Element menu = head.getElementById("menu");
+        Elements titles = menu.getElementsByTag("a");
         for (Element title: titles){
             Log.i(TAG,"getTitle "+title.wholeText());
         }
