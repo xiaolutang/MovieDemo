@@ -1,5 +1,7 @@
 package com.example.xiaolutang.moviedemo;
 
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -8,8 +10,11 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.example.xiaolutang.moviedemo.util.WebPageUtil;
+import com.example.xiaolutang.moviedemo.widget.ColorTrackView;
 
 public class MainActivity extends BaseActivity {
+
+    ColorTrackView trackView;
 
     private WebView _mWebView;
     private WebViewClient _mWebClient;
@@ -23,8 +28,21 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         Log.i(TAG,"onCreate");
         setContentView(R.layout.activity_main);
-        initWebView();
-        ladeMainPage();
+        trackView = (ColorTrackView) findViewById(R.id.id_changeTextColorView);
+        trackView.setDirection(0);
+        ObjectAnimator animator = ObjectAnimator.ofFloat(trackView, "mProgress", 0, 1);
+        animator.setDuration(2000);
+        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener(){
+
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                float currentValue = (float) animation.getAnimatedValue();
+                Log.i(TAG,"onAnimationUpdate currentValue = "+currentValue);
+            }
+        });
+        animator.start();
+//        initWebView();
+//        ladeMainPage();
         new Thread(new Runnable() {
             @Override
             public void run() {

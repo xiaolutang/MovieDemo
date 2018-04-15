@@ -15,6 +15,18 @@
                 <!--android:layout_width="match_parent"-->
                 <!--android:layout_height="match_parent"></LinearLayout>-->
     <!--</HorizontalScrollView>-->
+    <com.example.xiaolutang.moviedemo.widget.ColorTrackView
+        android:id="@+id/id_changeTextColorView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="#44ff0000"
+        android:padding="10dp"
+        app:progress="0"
+        app:text="张鸿洋"
+        app:text_change_color="#ffff0000"
+        app:text_origin_color="#ff000000"
+        app:text_size="60sp" />
 
     <WebView
             android:id="@+id/page_main_web_view"
